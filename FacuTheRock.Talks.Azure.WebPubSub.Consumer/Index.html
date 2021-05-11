@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Azure Days Latinoamierca 2021</title>
+
+    <script>
+        let ws = new WebSocket('<Client URI>');
+        ws.onopen = () => {
+            console.log('Connected!!!');
+        };
+
+        ws.onmessage = event => {
+            var node = document.createElement('li');
+            node.appendChild(document.createTextNode(event.data));
+
+            document.querySelector('#list').appendChild(node);
+        };
+    </script>
+</head>
+<body>
+    <span>Received</span>
+    <ul id="list"/>
+</body>
+</html>
