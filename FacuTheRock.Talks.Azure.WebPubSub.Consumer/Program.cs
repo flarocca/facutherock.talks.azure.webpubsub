@@ -6,12 +6,20 @@ namespace FacuTheRock.Talks.Azure.WebPubSub.Consumer
 {
     class Program
     {
+        private const string ClientAccessUrl = "<< Client Access URL >>";
+
         static async Task Main(string[] args)
         {
-            Console.WriteLine("Azure Days Latinoamierca 2021");
-            Console.WriteLine("Welcome to the Azure Web PubSub - Consumer\n\n");
+            #region Console Setup
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Azure Community Conference 2021");
+            Console.WriteLine("Azure Web PubSub: Web Sockets Revolution");
+            Console.WriteLine("By Facundo La Rocca\n");
 
-            using var client = new WebsocketClient(new Uri("<Client URI>"));
+            Console.WriteLine("Console App Consumer\n\n");
+            #endregion
+
+            using var client = new WebsocketClient(new Uri(ClientAccessUrl));
 
             using var _ = client.MessageReceived
                 .Subscribe(msg => Console.WriteLine($"Message received: {msg}"));

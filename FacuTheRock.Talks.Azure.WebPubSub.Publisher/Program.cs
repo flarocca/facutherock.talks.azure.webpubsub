@@ -6,12 +6,21 @@ namespace FacuTheRock.Talks.Azure.WebPubSub.Publisher
 {
     class Program
     {
+        private const string ConnectionString = "<< Connection String >>";
+        private const string Hub = "<< Hub >>";
+
         static async Task Main(string[] args)
         {
-            Console.WriteLine("Azure Days Latinoamierca 2021");
-            Console.WriteLine("Welcome to the Azure Web PubSub - Producer\n\n");
+            #region Console Setup
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Azure Community Conference 2021");
+            Console.WriteLine("Azure Web PubSub - Web Sockets Revolution");
+            Console.WriteLine("By Facundo La Rocca\n");
 
-            var serviceClient = new WebPubSubServiceClient("<Connection string>", "<Hub>");
+            Console.WriteLine("Console App Producer\n\n");
+            #endregion
+
+            var serviceClient = new WebPubSubServiceClient(ConnectionString, Hub);
 
             string message;
             while ((message = ReadInput()) != "c")
